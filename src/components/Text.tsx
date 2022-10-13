@@ -2,10 +2,12 @@ import { clsx } from "clsx";
 
 export interface TextProps {
   size?: "s" | "m" | "l";
-  children: string;
+  children: any;
+  asChild?: boolean;
+  className?: string;
 }
 
-export function Text({ size = "m", children }: TextProps) {
+export function Text({ size = "m", children, asChild, className }: TextProps) {
   return (
   <span 
     className={clsx(
@@ -14,7 +16,9 @@ export function Text({ size = "m", children }: TextProps) {
         'text-xs': size === "s",
         'text-s': size === "m",
         'text-m': size === "l",
-      })}
+      },
+      className,
+    )}  
   >
     {children}
   </span>
